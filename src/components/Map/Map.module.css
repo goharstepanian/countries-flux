@@ -1,0 +1,8 @@
+.map{
+    border-radius: 20px;
+    width: 600px;
+    height: 300px;
+    border: none;
+    display: flex;
+    text-align: center;
+}
