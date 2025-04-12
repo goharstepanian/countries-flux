@@ -1,22 +1,16 @@
-const GET_ALL = "get-all"
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { requestsReducer } from "./reducers/requestsReducer";
+import { thunk } from "redux-thunk";
+import { countryReducer } from "./reducers/countryReducer";
 
 
-export const initState = {
-    countries : []
-}
+
+const rootReducer = combineReducers({
+    homePage: requestsReducer,
+    countryPage : countryReducer,
+})
 
 
-export const reducer = (state,action) => {
-    switch (action.type) {
-        case GET_ALL:
-            return {
-                ...state,
-                countries: action.payload
-            }
 
-        default:
-             return state
-    }
-}
 
-export const getAllActionCreator = (res) => ({type: GET_ALL,payload : res.data})
+export const store = createStore(rootReducer, applyMiddleware(thunk));

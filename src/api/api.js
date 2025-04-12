@@ -6,6 +6,9 @@ const instance = axios.create({
 
 export const API = {
   getAll() {
-    return instance.get('/all');
+    return instance.get("/all");
+  },
+  getCountry(name) {
+    return instance.get(`/name/${name}`);
   },
 };
